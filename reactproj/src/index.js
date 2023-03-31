@@ -18,12 +18,35 @@
 
 
 
-const express = require('express');
+// const express = require('express');
+// const app = express();
+// app.get('/', (require, response) => {
+//  response.send("Hello world");
+// })
+// app.listen(3002, () => {
+//  console.log("running on port 3002");
+// })
+
+
+
+const express = require("express");
 const app = express();
-app.get('/', (require, response) => {
- response.send("Hello world");
-})
-app.listen(3002, () => {
- console.log("running on port 3002");
+const mysql = require("mysql");
+
+var db = mysql.createConnection({
+  host:'localhost',
+  user: 'root',
+  password:'mypassword',
+  database:'411demo',
 })
 
+app.get('/', (require, response) => {
+  const sqlInsert = "INSERT INTO `movie_reviews` (`movieName`, `movieReview`) VALUES ('Spider2', 'good movie');";
+  db.query(sqlInsert, (err, result) => {
+  response.send("Hello world!!!");
+  })
+})
+
+app.listen(3002, () => {
+  console.log("running on port 3002");
+})
