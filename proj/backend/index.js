@@ -39,6 +39,13 @@ app.post("/api/insert", (require, response) => {
     })
 });
 
+app.get("/api/search", (require, response) => {
+    const table = require.body.table;
+    const keyword = require.body.keyword;
+
+    
+});
+
 app.listen(3002, () => {
     console.log("running on port 3002");
 })
