@@ -10,7 +10,6 @@ var db = mysql.createConnection({
     password:'heeheehawhaw011',
     database:'whatif',
 })
-
 db.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
@@ -51,11 +50,37 @@ app.get("/api/display", (require, response) => {
     })
 })
 
+app.post("/api/delete", (require, response) => {
+    const NOCName = require.body.NOCName;
+
+    const sqlDelete = "DELETE FROM `NOC` WHERE `NOCName` = ?;";
+    db.query(sqlDelete, [NOCName], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Deleted!");
+        }
+    })
+})
+
+app.post("/api/update", (require, response) => {
+    const NOCName = require.body.NOCName;
+    const attribute = require.body.attribute;
+    const value = require.body.value;
+
+    const sqlUpdate = `UPDATE NOC SET ${attribute} = ? WHERE NOCName = ?;`;
+    db.query(sqlUpdate, [value, NOCName], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Updated!");
+        }
+    })
+})
+
 // app.get("/api/search", (require, response) => {
 //     const table = require.body.table;
 //     const keyword = require.body.keyword;
-
-    
 // });
 
 app.listen(3002, () => {
