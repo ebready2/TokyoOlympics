@@ -39,12 +39,24 @@ app.post("/api/insert", (require, response) => {
     })
 });
 
-app.get("/api/search", (require, response) => {
-    const table = require.body.table;
-    const keyword = require.body.keyword;
+app.get("/api/display", (require, response) => {
+    const sqlSearch = "SELECT * FROM `NOC` ORDER BY `ranking` ASC LIMIT 5;";
+    db.query(sqlSearch, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Searched!");
+            response.send(result);
+        }
+    })
+})
+
+// app.get("/api/search", (require, response) => {
+//     const table = require.body.table;
+//     const keyword = require.body.keyword;
 
     
-});
+// });
 
 app.listen(3002, () => {
     console.log("running on port 3002");

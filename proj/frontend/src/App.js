@@ -12,8 +12,8 @@ function App() {
   const [bronzeMedalCount, setBronzeMedalCount] = useState('');
   const [totalMedalCount, setTotalMedalCount] = useState('');
 
-  const [table, setTable] = useState('');
-  const [keyword, setKeyword] = useState('');
+  // const [table, setTable] = useState('');
+  // const [keyword, setKeyword] = useState('');
 
   // Functions
   const submitInsert = () => {
@@ -29,14 +29,23 @@ function App() {
       alert('success insert')
     })
   };
-  const submitSearch = () => {
-    Axios.get('http://localhost:3002/api/search', {
-      table: table,
-      keyword: keyword
-    }).then(() => {
-      alert('success search')
-    })
+
+  const submitDisplay = () => {
+    const resp = Axios.get('http://localhost:3002/api/display')
+    .then(function (response) {
+      console.log(response.data);
+      document.getElementsByName('output')[0].value = JSON.stringify(response.data);
+    });
   };
+
+  // const submitSearch = () => {
+  //   Axios.get('http://localhost:3002/api/search', {
+  //     table: table,
+  //     keyword: keyword
+  //   }).then(() => {
+  //     alert('success search')
+  //   })
+  // };
 
   return (
     <div className="App">
@@ -74,9 +83,13 @@ function App() {
         }}/>
 
         <button onClick={submitInsert}> Submit</button>
+
+        <button onClick={submitDisplay}> Display</button>
+        <label for="output">The response is: </label><input type="textbox" name="output"></input>
+        
       </div>
 
-      <h2> Search</h2>
+      {/* <h2> Search</h2>
       <div className="form">
       <label> table:</label>
         <input type="text" name="table" onChange={(e) => {
@@ -87,7 +100,7 @@ function App() {
           setKeyword(e.target.value)
         } }/>
         <button onClick={submitSearch}> Submit</button>
-      </div>
+      </div> */}
   
     </div>
   );
