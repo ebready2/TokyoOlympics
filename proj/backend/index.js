@@ -42,14 +42,18 @@ app.post("/api/insert", (require, response) => {
 app.post("/api/delete", (require, response) => {
     const table = require.body.table;
     const attribute = require.body.attribute;
-    const NOCName = require.body.NOCName;
+    const value = require.body.value;
+    console.log(table);
+    console.log(attribute);
+    console.log(value);
 
-    const sqlDelete = `DELETE FROM ${table} WHERE ${attribute} = '${NOCName}';`;
+    const sqlDelete = `DELETE FROM ${table} WHERE ${attribute} = '${value}';`;
     db.query(sqlDelete, (err, result) => {
         if (err) {
             console.log(err);
         } else {
             console.log("Deleted!");
+            console.log(result);
             response.send(result);
         }
     })
@@ -82,6 +86,9 @@ app.get("/api/search", (require, response) => {
     db.query(sql1, (err, result) => {
         if (err) {
             console.log(err);
+        } else if (result.length == 0) {
+            console.log("Empty response");
+            response.send("Empty");
         } else {
             console.log("Searched!");
             response.send(result);

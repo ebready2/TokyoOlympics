@@ -2,6 +2,23 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.content {
+  padding-left: 40px;
+}
+
+.response {
+  display:flex;
+  text-align:center;
+  justify-content: center;
+}
+
+.stage4 {
+  display:flex;
+  text-align:center;
+  background-color:darkcyan;
+  justify-content: center;
+}
+
 .search-container {
   display: flex;
   justify-content: center;

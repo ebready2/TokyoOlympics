@@ -1,4 +1,3 @@
 # don't push node modules!
-ourproj/node_modules/
 proj/frontend/node_modules/
 proj/backend/node_modules/
