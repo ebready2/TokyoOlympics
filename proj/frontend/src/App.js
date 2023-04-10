@@ -142,148 +142,213 @@ function App() {
 
   return (
     <div className="App">
-      <h1> What-If Olympics</h1>
       <div className="stage4">
+        <h1 className="whatif">What-If Olympics</h1>
+      </div>
+      <div>
+        <div className="content">
+          <h2> Insert</h2>
+          <table className="contentTable">
+            <div className="form">
+              <tr>
+                <td><label> NOCName:</label></td>
+                <td><input type="text" name="NOCName" onChange={(e) => {
+                  setNOCName(e.target.value)
+                } }/></td>
+              </tr>
 
-        <h2> Insert</h2>
-        <div className="form">
-          <label> NOCName:</label>
-          <input type="text" name="NOCName" onChange={(e) => {
-            setNOCName(e.target.value)
-          } }/><br></br>
-          <label> ranking:</label>
-          <input type="text" name="ranking" onChange={(e) => {
-            setRanking(e.target.value)
-          }}/><br></br>
-          <label> weightedRanking:</label>
-          <input type="text" name="weightedRanking" onChange={(e) => {
-            setWeightedRanking(e.target.value)
-          }}/><br></br>
-          <label> goldMedalCount:</label>
-          <input type="text" name="goldMedalCount" onChange={(e) => {
-            setGoldMedalCount(e.target.value)
-          }}/><br></br>
-          <label> silverMedalCount:</label>
-          <input type="text" name="silverMedalCount" onChange={(e) => {
-            setSilverMedalCount(e.target.value)
-          }}/><br></br>
-          <label> bronzeMedalCount:</label>
-          <input type="text" name="bronzeMedalCount" onChange={(e) => {
-            setBronzeMedalCount(e.target.value)
-          }}/><br></br>
-          <label> totalMedalCount:</label>
-          <input type="text" name="totalMedalCount" onChange={(e) => {
-            setTotalMedalCount(e.target.value)
-          }}/><br></br>
+              <tr>
+                <td><label> ranking:</label></td>
+                <td><input type="text" name="ranking" onChange={(e) => {
+                  setRanking(e.target.value)
+                }}/></td>
+              </tr>
 
-          <button onClick={submitInsert}> Insert</button>
-          <button onClick={() => submitDisplay(`SELECT * FROM NOC WHERE NOCName = '${NOCName}';`)}> Display</button>
-          
+              <tr>
+                <td><label> weightedRanking:</label></td>
+                <td><input type="text" name="weightedRanking" onChange={(e) => {
+                  setWeightedRanking(e.target.value)
+                }}/></td>
+              </tr>
+
+              <tr>
+                <td><label> goldMedalCount:</label></td>
+                <td><input type="text" name="goldMedalCount" onChange={(e) => {
+                  setGoldMedalCount(e.target.value)
+                }}/></td>
+              </tr>
+
+              <tr>
+                <td><label> silverMedalCount:</label></td>
+                <td><input type="text" name="silverMedalCount" onChange={(e) => {
+                  setSilverMedalCount(e.target.value)
+                }}/></td>
+              </tr>
+
+              <tr>
+                <td><label> bronzeMedalCount:</label></td>
+                <td><input type="text" name="bronzeMedalCount" onChange={(e) => {
+                  setBronzeMedalCount(e.target.value)
+                }}/></td>
+              </tr>
+
+              <tr>
+                <td><label> totalMedalCount:</label></td>
+                <td><input type="text" name="totalMedalCount" onChange={(e) => {
+                  setTotalMedalCount(e.target.value)
+                }}/></td>
+              </tr>
+
+              <button onClick={submitInsert}> Insert</button>
+              <button onClick={() => submitDisplay(`SELECT * FROM NOC WHERE NOCName = '${NOCName}';`)}> Display</button>
+            </div>
+          </table>
+
+          <h2> Delete</h2>
+          <table>
+            <div className="form">
+              <tr>
+                <td><label> Table:</label></td>
+                <td><input type="text" name="table" onChange={(e) => {
+                  setTable(e.target.value)
+                } }/></td>
+              </tr>
+              
+              <tr>
+                <td><label> Attribute:</label></td>
+                <td><input type="text" name="attribute" onChange={(e) => {
+                  setAttribute(e.target.value)
+                } }/></td>
+              </tr>
+
+              <tr>
+                <td><label> Value:</label></td>
+                <td><input type="text" name="value" onChange={(e) => {
+                  setValue(e.target.value)
+                } }/></td>
+              </tr>
+
+              <button onClick={submitDelete}> Delete</button>
+              <button onClick={() => submitDisplay(`SELECT * FROM ${table} WHERE ${attribute} = '${value}';`)}> Display</button>
+            </div>
+          </table>
+
+          <h2> Update</h2>
+          <table>
+            <div className="form">
+              <tr>         
+                <td><label> updateTable:</label></td>
+                <td><input type="text" name="updateTable" onChange={(e) => {
+                  setUpdateTable(e.target.value)
+                } }/></td>
+              </tr>
+
+              <tr>
+                <td><label> updateNewAttribute:</label></td>
+                <td><input type="text" name="updateNewAttribute" onChange={(e) => {
+                  setUpdateNewAttribute(e.target.value)
+                } }/></td>
+              </tr>
+
+              <tr>
+                <td><label> updateNewValue:</label></td>
+                <td><input type="text" name="updateNewValue" onChange={(e) => {
+                  setUpdateNewValue(e.target.value)
+                } }/></td>
+              </tr>
+
+              <tr>
+                <td><label> updateAttribute:</label></td>
+                <td><input type="text" name="updateAttribute" onChange={(e) => {
+                  setUpdateAttribute(e.target.value)
+                } }/></td>
+              </tr>
+
+              <tr>
+                <td><label> updateValue:</label></td>
+                <td><input type="text" name="updateValue" onChange={(e) => {
+                  setUpdateValue(e.target.value)
+                } }/></td>
+              </tr>    
+
+              <button onClick={submitUpdate}> Update</button>
+              <button onClick={() => submitDisplay(`SELECT * FROM ${updateTable} WHERE ${updateAttribute} = '${updateValue}';`)}> Display</button>
+            </div>
+          </table>
+
+          <h2> Search</h2>
+          <table>
+            <div className="form">
+              <tr>
+                <td><label> Table:</label></td>
+                <td><input type="text" name="table" onChange={(e) => {
+                  setTable(e.target.value)
+                } }/></td>
+              </tr>
+
+              <tr>
+                <td><label> Attribute:</label></td>
+                <td><input type="text" name="attribute" onChange={(e) => {
+                  setAttribute(e.target.value)
+                } }/></td>
+              </tr>
+
+              <tr>
+                <td><label> Keyword:</label></td>
+                <td><input type="text" name="keyword" onChange={(e) => {
+                  setKeyword(e.target.value)
+                } }/></td>
+              </tr>
+
+              <button onClick={submitSearch}> Search</button>
+              <button onClick={() => showRows("output")}> Display</button>
+            </div>
+          </table>
+
+          <br></br>
+          <h1> RESPONSE</h1>
+          <div classname="response">
+            <label for="output"></label>
+            <textarea name="output" rows="2" cols="40"></textarea>
+          </div>
+
+          <br></br>
+          <h1> ADVANCED QUERIES</h1>
+
+          <h2> Query 1</h2>
+          <p>
+          SELECT n.NOCName, n.goldMedalCount<br></br>
+          FROM NOC n NATURAL JOIN Athlete a<br></br>
+          WHERE n.goldMedalCount > 0 AND n.goldMedalCount > (<br></br>
+                &emsp;SELECT AVG(n1.goldMedalCount) AS AverageCount<br></br>
+                &emsp;FROM NOC n1 NATURAL JOIN Athlete a<br></br>
+                &emsp;WHERE a.discName = 'Karate'<br></br>
+          )<br></br>
+          GROUP BY n.NOCName<br></br>
+          ORDER BY n.goldMedalCount DESC;<br></br>
+          </p>
+          <button onClick={submitQuery1}> Run</button>
+
+          <h2> Query 2</h2>
+          <p>
+          (<br></br>
+          &emsp;SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount<br></br>
+          &emsp;FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)<br></br>
+          &emsp;WHERE a.discName = 'Basketball'<br></br>
+          &emsp;GROUP BY coachName, c.NOCName, c.discName<br></br>
+          )<br></br>
+          UNION<br></br>
+          (<br></br>
+          &emsp;SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount<br></br>
+          &emsp;FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)<br></br>
+          &emsp;WHERE a.discName = 'Football'<br></br>
+          &emsp;GROUP BY coachName, c.NOCName, c.discName<br></br>
+          )<br></br>
+          ORDER BY coachName<br></br>
+          LIMIT 15;<br></br>
+          </p>
+          <button onClick={submitQuery2}> Run</button>
         </div>
-
-        <h2> Delete</h2>
-        <div className="form">
-          <label> Table:</label>
-          <input type="text" name="table" onChange={(e) => {
-            setTable(e.target.value)
-          } }/><br></br>
-          <label> Attribute:</label>
-          <input type="text" name="attribute" onChange={(e) => {
-            setAttribute(e.target.value)
-          } }/><br></br>
-          <label> Value:</label>
-          <input type="text" name="value" onChange={(e) => {
-            setValue(e.target.value)
-          } }/><br></br>
-
-          <button onClick={submitDelete}> Delete</button>
-          <button onClick={() => submitDisplay(`SELECT * FROM ${table} WHERE ${attribute} = '${value}';`)}> Display</button>
-        </div>
-
-        <h2> Update</h2>
-        <div className="form">
-          <label> updateTable:</label>
-          <input type="text" name="updateTable" onChange={(e) => {
-            setUpdateTable(e.target.value)
-          } }/><br></br>
-          <label> updateNewAttribute:</label>
-          <input type="text" name="updateNewAttribute" onChange={(e) => {
-            setUpdateNewAttribute(e.target.value)
-          } }/><br></br>
-          <label> updateNewValue:</label>
-          <input type="text" name="updateNewValue" onChange={(e) => {
-            setUpdateNewValue(e.target.value)
-          } }/><br></br>
-          <label> updateAttribute:</label>
-          <input type="text" name="updateAttribute" onChange={(e) => {
-            setUpdateAttribute(e.target.value)
-          } }/><br></br>
-          <label> updateValue:</label>
-          <input type="text" name="updateValue" onChange={(e) => {
-            setUpdateValue(e.target.value)
-          } }/><br></br>        
-
-          <button onClick={submitUpdate}> Update</button>
-          <button onClick={() => submitDisplay(`SELECT * FROM ${updateTable} WHERE ${updateAttribute} = '${updateValue}';`)}> Display</button>
-        </div>
-
-        <h2> Search</h2>
-        <div className="form">
-          <label> Table:</label>
-          <input type="text" name="table" onChange={(e) => {
-            setTable(e.target.value)
-          } }/><br></br>
-          <label> Attribute:</label>
-          <input type="text" name="attribute" onChange={(e) => {
-            setAttribute(e.target.value)
-          } }/><br></br>
-          <label> Keyword:</label>
-          <input type="text" name="keyword" onChange={(e) => {
-            setKeyword(e.target.value)
-          } }/><br></br>
-
-          <button onClick={submitSearch}> Search</button>
-          <button onClick={() => showRows("output")}> Display</button>
-        </div>
-
-        <br></br>
-        <h1> RESPONSE</h1>
-        <label for="output"></label>
-        <textarea name="output" rows="2" cols="10"></textarea>
-
-        <br></br>
-        <h1> ADVANCED QUERIES</h1>
-
-        <h2> Query 1</h2>
-        <h3>
-        SELECT n.NOCName, n.goldMedalCount<br></br>
-        FROM NOC n NATURAL JOIN Athlete a<br></br>
-        WHERE n.goldMedalCount > 0 AND n.goldMedalCount > (<br></br>
-              &emsp;SELECT AVG(n1.goldMedalCount) AS AverageCount<br></br>
-              &emsp;FROM NOC n1 NATURAL JOIN Athlete a<br></br>
-              &emsp;WHERE a.discName = 'Karate'<br></br>
-        )<br></br>
-        GROUP BY n.NOCName<br></br>
-        ORDER BY n.goldMedalCount DESC;<br></br>
-        </h3>
-        <button onClick={submitQuery1}> Run</button>
-
-        <h2> Query 2</h2>
-        <h3>
-        (SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount<br></br>
-        FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)<br></br>
-        WHERE a.discName = 'Basketball'<br></br>
-        GROUP BY coachName, c.NOCName, c.discName)<br></br>
-        &emsp;UNION<br></br>
-        (SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount<br></br>
-        FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)<br></br>
-        WHERE a.discName = 'Football'<br></br>
-        GROUP BY coachName, c.NOCName, c.discName)<br></br>
-        ORDER BY coachName<br></br>
-        LIMIT 15;<br></br>
-        </h3>
-        <button onClick={submitQuery2}> Run</button>
-
       </div>
     </div>
   );
