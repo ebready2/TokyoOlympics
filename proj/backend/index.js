@@ -28,61 +28,128 @@ app.post("/api/insert", (require, response) => {
     const bronzeMedalCount = require.body.bronzeMedalCount;
     const totalMedalCount = require.body.totalMedalCount;
 
-    const sqlInsert = "INSERT INTO `NOC` (`NOCName`,`ranking`,`weightedRanking`,`goldMedalCount`,`silverMedalCount`,`bronzeMedalCount`,`totalMedalCount`) VALUES (?,?,?,?,?,?,?);";
-    db.query(sqlInsert, [NOCName, ranking, weightedRanking, goldMedalCount, silverMedalCount, bronzeMedalCount, totalMedalCount], (err, result) => {
+    const sqlInsert = `INSERT INTO NOC (NOCName,ranking,weightedRanking,goldMedalCount,silverMedalCount,bronzeMedalCount,totalMedalCount) VALUES ('${NOCName}',${ranking},${weightedRanking},${goldMedalCount},${silverMedalCount},${bronzeMedalCount},${totalMedalCount});`;
+    db.query(sqlInsert, (err, result) => {
         if (err) {
             console.log(err);
         } else {
             console.log("Inserted!");
+            response.send(result);
         }
     })
 });
 
-app.get("/api/display", (require, response) => {
-    const sqlSearch = "SELECT * FROM `NOC` ORDER BY `ranking` ASC LIMIT 5;";
-    db.query(sqlSearch, (err, result) => {
+app.post("/api/delete", (require, response) => {
+    const table = require.body.table;
+    const attribute = require.body.attribute;
+    const NOCName = require.body.NOCName;
+
+    const sqlDelete = `DELETE FROM ${table} WHERE ${attribute} = '${NOCName}';`;
+    db.query(sqlDelete, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Deleted!");
+            response.send(result);
+        }
+    })
+})
+
+app.post("/api/update", (require, response) => {
+    const updateTable = require.body.updateTable;
+    const updateNewAttribute = require.body.updateNewAttribute;
+    const updateNewValue = require.body.updateNewValue;
+    const updateAttribute = require.body.updateAttribute;
+    const updateValue = require.body.updateValue;
+
+    const sqlUpdate = `UPDATE ${updateTable} SET ${updateNewAttribute} = '${updateNewValue}' WHERE ${updateAttribute} = '${updateValue}';`;
+    db.query(sqlUpdate, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Updated!");
+            response.send(result);
+        }
+    })
+});
+
+app.get("/api/search", (require, response) => {
+    const table = require.query.table;
+    const attribute = require.query.attribute;
+    const keyword = require.query.keyword;
+
+    const sql1 = `SELECT * FROM ${table} WHERE ${attribute} LIKE '%${keyword}%';`;
+    db.query(sql1, (err, result) => {
         if (err) {
             console.log(err);
         } else {
             console.log("Searched!");
             response.send(result);
         }
-    })
-})
+    });
+});
 
-app.post("/api/delete", (require, response) => {
-    const NOCName = require.body.NOCName;
+app.get("/api/display", (require, response) => {
+    const myquery = require.query.myquery;
+    console.log(myquery);
 
-    const sqlDelete = "DELETE FROM `NOC` WHERE `NOCName` = ?;";
-    db.query(sqlDelete, [NOCName], (err, result) => {
+    const sqlSearch = `${myquery}`;
+    db.query(sqlSearch, (err, result) => {
         if (err) {
             console.log(err);
         } else {
-            console.log("Deleted!");
+            console.log("Searched!");
+            console.log(result);
+            response.send(result);
         }
     })
-})
+});
 
-app.post("/api/update", (require, response) => {
-    const NOCName = require.body.NOCName;
-    const attribute = require.body.attribute;
-    const value = require.body.value;
-
-    const sqlUpdate = `UPDATE NOC SET ${attribute} = ? WHERE NOCName = ?;`;
-    db.query(sqlUpdate, [value, NOCName], (err, result) => {
+app.get("/api/query1", (require, response) => {
+    const sqlQuery1 = `SELECT n.NOCName, n.goldMedalCount
+    FROM NOC n NATURAL JOIN Athlete a
+    WHERE n.goldMedalCount > 0 AND n.goldMedalCount > (
+    SELECT AVG(n1.goldMedalCount) AS AverageCount
+    FROM NOC n1 NATURAL JOIN Athlete a
+    WHERE a.discName = 'Karate'
+    )
+    GROUP BY n.NOCName
+    ORDER BY n.goldMedalCount DESC;`;
+    db.query(sqlQuery1, (err, result) => {
         if (err) {
             console.log(err);
         } else {
-            console.log("Updated!");
+            console.log("Query 1!");
+            console.log(result);
+            response.send(result);
+        }
+    })
+});
+
+app.get("/api/query2", (require, response) => {
+    const sqlQuery2 = `(SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount
+    FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)
+    WHERE a.discName = 'Basketball'
+    GROUP BY coachName, c.NOCName, c.discName)
+    UNION
+    (SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount
+    FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)
+    WHERE a.discName = 'Football'
+    GROUP BY coachName, c.NOCName, c.discName)
+    ORDER BY coachName
+    LIMIT 15;
+    `;
+    db.query(sqlQuery2, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Query 2!");
+            console.log(result);
+            response.send(result);
         }
     })
 })
-
-// app.get("/api/search", (require, response) => {
-//     const table = require.body.table;
-//     const keyword = require.body.keyword;
-// });
 
 app.listen(3002, () => {
     console.log("running on port 3002");
-})
+});
