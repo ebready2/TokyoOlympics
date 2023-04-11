@@ -138,7 +138,8 @@ function App() {
   }
 
   const showResponse = (output) => {
-    document.getElementsByName(output)[0].value = JSON.stringify(responseData);
+    // pretty print in response box
+    document.getElementsByName(output)[0].value = JSON.stringify(responseData, null, 2);
   }
 
   return (
