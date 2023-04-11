@@ -40,20 +40,16 @@ app.post("/api/insert", (require, response) => {
 });
 
 app.post("/api/delete", (require, response) => {
-    const table = require.body.table;
-    const attribute = require.body.attribute;
-    const value = require.body.value;
-    console.log(table);
-    console.log(attribute);
-    console.log(value);
+    const deleteTable = require.body.deleteTable;
+    const deleteAttribute = require.body.deleteAttribute;
+    const deleteValue = require.body.deleteValue;
 
-    const sqlDelete = `DELETE FROM ${table} WHERE ${attribute} = '${value}';`;
+    const sqlDelete = `DELETE FROM ${deleteTable} WHERE ${deleteAttribute} = '${deleteValue}';`;
     db.query(sqlDelete, (err, result) => {
         if (err) {
             console.log(err);
         } else {
             console.log("Deleted!");
-            console.log(result);
             response.send(result);
         }
     })
@@ -61,12 +57,12 @@ app.post("/api/delete", (require, response) => {
 
 app.post("/api/update", (require, response) => {
     const updateTable = require.body.updateTable;
-    const updateNewAttribute = require.body.updateNewAttribute;
-    const updateNewValue = require.body.updateNewValue;
+    const updateSetAttribute = require.body.updateSetAttribute;
+    const updateSetValue = require.body.updateSetValue;
     const updateAttribute = require.body.updateAttribute;
     const updateValue = require.body.updateValue;
 
-    const sqlUpdate = `UPDATE ${updateTable} SET ${updateNewAttribute} = '${updateNewValue}' WHERE ${updateAttribute} = '${updateValue}';`;
+    const sqlUpdate = `UPDATE ${updateTable} SET ${updateSetAttribute} = ${updateSetValue} WHERE ${updateAttribute} = '${updateValue}';`;
     db.query(sqlUpdate, (err, result) => {
         if (err) {
             console.log(err);
@@ -78,17 +74,14 @@ app.post("/api/update", (require, response) => {
 });
 
 app.get("/api/search", (require, response) => {
-    const table = require.query.table;
-    const attribute = require.query.attribute;
-    const keyword = require.query.keyword;
+    const searchTable = require.query.searchTable;
+    const searchAttribute = require.query.searchAttribute;
+    const searchKeyword = require.query.searchKeyword;
 
-    const sql1 = `SELECT * FROM ${table} WHERE ${attribute} LIKE '%${keyword}%';`;
+    const sql1 = `SELECT * FROM ${searchTable} WHERE ${searchAttribute} LIKE '%${searchKeyword}%';`;
     db.query(sql1, (err, result) => {
         if (err) {
             console.log(err);
-        } else if (result.length == 0) {
-            console.log("Empty response");
-            response.send("Empty");
         } else {
             console.log("Searched!");
             response.send(result);
@@ -97,10 +90,10 @@ app.get("/api/search", (require, response) => {
 });
 
 app.get("/api/display", (require, response) => {
-    const myquery = require.query.myquery;
-    console.log(myquery);
+    const myQuery = require.query.myQuery;
+    console.log(myQuery);
 
-    const sqlSearch = `${myquery}`;
+    const sqlSearch = `${myQuery}`;
     db.query(sqlSearch, (err, result) => {
         if (err) {
             console.log(err);

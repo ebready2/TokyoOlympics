@@ -3,19 +3,9 @@ import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 
 function App() {
-  // Inputs
+  // inputs
   const [responseData, setResponseData] = useState('');
-
-  const [updateTable, setUpdateTable] = useState('');
-  const [updateNewAttribute, setUpdateNewAttribute] = useState('');
-  const [updateNewValue, setUpdateNewValue] = useState('');
-  const [updateAttribute, setUpdateAttribute] = useState('');
-  const [updateValue, setUpdateValue] = useState('');
-
-  const [value, setValue] = useState('');
-  const [attribute, setAttribute] = useState('');
-  const [table, setTable] = useState('');
-  const [keyword, setKeyword] = useState('');
+  const [myQuery, setMyQuery] = useState('');
 
   const [NOCName, setNOCName] = useState('');
   const [ranking, setRanking] = useState('');
@@ -25,7 +15,21 @@ function App() {
   const [bronzeMedalCount, setBronzeMedalCount] = useState('');
   const [totalMedalCount, setTotalMedalCount] = useState('');
 
-  // Submits
+  const [deleteTable, setDeleteTable] = useState('');
+  const [deleteAttribute, setDeleteAttribute] = useState('');
+  const [deleteValue, setDeleteValue] = useState('');
+
+  const [updateTable, setUpdateTable] = useState('');
+  const [updateSetAttribute, setUpdateSetAttribute] = useState('');
+  const [updateSetValue, setUpdateSetValue] = useState('');
+  const [updateAttribute, setUpdateAttribute] = useState('');
+  const [updateValue, setUpdateValue] = useState('');
+
+  const [searchTable, setSearchTable] = useState('');
+  const [searchAttribute, setSearchAttribute] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState('');
+
+  // requests
   const submitInsert = () => {
     Axios.post('http://localhost:3002/api/insert', {
       NOCName: NOCName,
@@ -36,7 +40,8 @@ function App() {
       bronzeMedalCount: bronzeMedalCount,
       totalMedalCount: totalMedalCount
     }).then((response) => {
-      // setResponseData(response.config.data);
+      // display the inputted record and ones with similar NOCNames
+      setMyQuery(`SELECT * FROM NOC WHERE NOCName LIKE '%${NOCName}%';`);
       console.log(response);
     }).catch((error) => {
       console.log('Insert error');
@@ -46,11 +51,12 @@ function App() {
 
   const submitDelete = () => {
     Axios.post('http://localhost:3002/api/delete', {
-      table: table,
-      attribute: attribute,
-      value: value
+      deleteTable: deleteTable,
+      deleteAttribute: deleteAttribute,
+      deleteValue: deleteValue
     }).then((response) => {
-      // setResponseData(response);
+      // display the remaining entries with a similar deleteValue
+      setMyQuery(`SELECT * FROM ${deleteTable} WHERE ${deleteAttribute} LIKE '%${deleteValue}%';`);
       console.log(response);
     }).catch((error) => {
       console.log('Delete error');
@@ -61,12 +67,14 @@ function App() {
   const submitUpdate = () => {
     Axios.post('http://localhost:3002/api/update', {
       updateTable: updateTable,
-      updateNewAttribute: updateNewAttribute,
-      updateNewValue: updateNewValue,
+      updateSetAttribute: updateSetAttribute,
+      updateSetValue: updateSetValue,
       updateAttribute: updateAttribute,
       updateValue: updateValue
     }).then((response) => {
-      // setResponseData(response);
+      // display updated record and ones with a similar updateValue
+      // can't change primary key, only other attributes
+      setMyQuery(`SELECT * FROM ${updateTable} WHERE ${updateAttribute} LIKE '%${updateValue}%';`);
       console.log(response);
     }).catch((error) => {
       console.log('Update error');
@@ -77,9 +85,9 @@ function App() {
   const submitSearch = () => {
     Axios.get('http://localhost:3002/api/search', {
       params: {
-        table: table,
-        attribute: attribute,
-        keyword: keyword
+        searchTable: searchTable,
+        searchAttribute: searchAttribute,
+        searchKeyword: searchKeyword
       }
     }).then((response) => {
       setResponseData(response.data);
@@ -90,15 +98,15 @@ function App() {
     })
   };
 
-  const submitDisplay = (myquery) => {
+  const submitDisplay = () => {
     Axios.get('http://localhost:3002/api/display', {
       params: {
-        myquery: myquery
+        myQuery: myQuery
       }
     }).then((response) => {
       setResponseData(response.data);
       console.log(response);
-      showRows("output");
+      showResponse("output");
     }).catch((error) => {
       console.log('Display error');
       console.log(error);
@@ -110,8 +118,7 @@ function App() {
     .then((response) => {
       setResponseData(response.data);
       console.log(response);
-    }).then(() => {
-      showRows("output");
+      showResponse("output");
     }).catch((error) => {
       console.log('Query 1 error');
       console.log(error);
@@ -119,26 +126,20 @@ function App() {
   }
 
   const submitQuery2 = () => {
-    console.log("Starting Query 2")
     Axios.get('http://localhost:3002/api/query2')
     .then((response) => {
       setResponseData(response.data);
       console.log(response);
-    }).then(() => {
-      showRows("output");
+      showResponse("output");
     }).catch((error) => {
       console.log('Query 2 error');
       console.log(error);
     })
   }
 
-  const showRows = (output) => {
+  const showResponse = (output) => {
     document.getElementsByName(output)[0].value = JSON.stringify(responseData);
   }
-
-  // useEffect(() => {
-  //   showRows("output");
-  // });
 
   return (
     <div className="App">
@@ -200,7 +201,7 @@ function App() {
               </tr>
 
               <button onClick={submitInsert}> Insert</button>
-              <button onClick={() => submitDisplay(`SELECT * FROM NOC WHERE NOCName = '${NOCName}';`)}> Display</button>
+              <button onClick={() => submitDisplay()}> Display</button>
             </div>
           </table>
 
@@ -208,28 +209,28 @@ function App() {
           <table>
             <div className="form">
               <tr>
-                <td><label> Table:</label></td>
-                <td><input type="text" name="table" onChange={(e) => {
-                  setTable(e.target.value)
+                <td><label> deleteTable:</label></td>
+                <td><input type="text" name="deleteTable" onChange={(e) => {
+                  setDeleteTable(e.target.value)
                 } }/></td>
               </tr>
               
               <tr>
-                <td><label> Attribute:</label></td>
-                <td><input type="text" name="attribute" onChange={(e) => {
-                  setAttribute(e.target.value)
+                <td><label> deleteAttribute:</label></td>
+                <td><input type="text" name="deleteAttribute" onChange={(e) => {
+                  setDeleteAttribute(e.target.value)
                 } }/></td>
               </tr>
 
               <tr>
-                <td><label> Value:</label></td>
-                <td><input type="text" name="value" onChange={(e) => {
-                  setValue(e.target.value)
+                <td><label> deleteValue:</label></td>
+                <td><input type="text" name="deleteValue" onChange={(e) => {
+                  setDeleteValue(e.target.value)
                 } }/></td>
               </tr>
 
               <button onClick={submitDelete}> Delete</button>
-              <button onClick={() => submitDisplay(`SELECT * FROM ${table} WHERE ${attribute} = '${value}';`)}> Display</button>
+              <button onClick={() => submitDisplay()}> Display</button>
             </div>
           </table>
 
@@ -244,16 +245,16 @@ function App() {
               </tr>
 
               <tr>
-                <td><label> updateNewAttribute:</label></td>
-                <td><input type="text" name="updateNewAttribute" onChange={(e) => {
-                  setUpdateNewAttribute(e.target.value)
+                <td><label> updateSetAttribute:</label></td>
+                <td><input type="text" name="updateSetAttribute" onChange={(e) => {
+                  setUpdateSetAttribute(e.target.value)
                 } }/></td>
               </tr>
 
               <tr>
-                <td><label> updateNewValue:</label></td>
-                <td><input type="text" name="updateNewValue" onChange={(e) => {
-                  setUpdateNewValue(e.target.value)
+                <td><label> updateSetValue:</label></td>
+                <td><input type="text" name="updateSetValue" onChange={(e) => {
+                  setUpdateSetValue(e.target.value)
                 } }/></td>
               </tr>
 
@@ -272,7 +273,7 @@ function App() {
               </tr>    
 
               <button onClick={submitUpdate}> Update</button>
-              <button onClick={() => submitDisplay(`SELECT * FROM ${updateTable} WHERE ${updateAttribute} = '${updateValue}';`)}> Display</button>
+              <button onClick={() => submitDisplay()}> Display</button>
             </div>
           </table>
 
@@ -280,28 +281,28 @@ function App() {
           <table>
             <div className="form">
               <tr>
-                <td><label> Table:</label></td>
-                <td><input type="text" name="table" onChange={(e) => {
-                  setTable(e.target.value)
+                <td><label> searchTable:</label></td>
+                <td><input type="text" name="searchTable" onChange={(e) => {
+                  setSearchTable(e.target.value)
                 } }/></td>
               </tr>
 
               <tr>
-                <td><label> Attribute:</label></td>
-                <td><input type="text" name="attribute" onChange={(e) => {
-                  setAttribute(e.target.value)
+                <td><label> searchAttribute:</label></td>
+                <td><input type="text" name="searchAttribute" onChange={(e) => {
+                  setSearchAttribute(e.target.value)
                 } }/></td>
               </tr>
 
               <tr>
-                <td><label> Keyword:</label></td>
-                <td><input type="text" name="keyword" onChange={(e) => {
-                  setKeyword(e.target.value)
+                <td><label> searchKeyword:</label></td>
+                <td><input type="text" name="searchKeyword" onChange={(e) => {
+                  setSearchKeyword(e.target.value)
                 } }/></td>
               </tr>
 
               <button onClick={submitSearch}> Search</button>
-              <button onClick={() => showRows("output")}> Display</button>
+              <button onClick={() => showResponse("output")}> Display</button>
             </div>
           </table>
 
