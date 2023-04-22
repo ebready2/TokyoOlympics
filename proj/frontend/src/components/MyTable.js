@@ -1,10 +1,10 @@
 // taken from https://www.tutorialspoint.com/how-to-convert-json-data-to-a-html-table-using-javascript-jquery
-const showRows = async (responseData) => {
+const showRows = (responseData) => {
     // Get the container element where the table will be inserted
     let container = document.getElementById("container");
     container.innerHTML = ""; // Clear previous data
 
-    if (responseData.length == 0) {
+    if (responseData.length === 0) {
         container.append("No results");
         return;
     };

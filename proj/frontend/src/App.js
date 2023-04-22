@@ -2,20 +2,13 @@ import './App.css';
 import MySideNav from './components/MySideNav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Search from './pages/Search/Search';
-import Insert from './pages/Insert/Insert';
-
-import DeleteNOC from './pages/Delete/DeleteNOC';
-import DeleteAthlete from './pages/Delete/DeleteAthlete';
-import DeleteCoach from './pages/Delete/DeleteCoach';
-import DeleteTeam from './pages/Delete/DeleteTeam';
-import DeleteDiscipline from './pages/Delete/DeleteDiscipline';
-import DeleteParticipate from './pages/Delete/DeleteParticipate';
-
-import Update from './pages/Update/Update';
-import AQ1 from './pages/AQ/AQ1';
-import AQ2 from './pages/AQ/AQ2';
+import Home from './pages/home';
+import Search from './pages/search';
+import Insert from './pages/insert';
+import Delete from './pages/delete';
+import Update from './pages/update';
+import AQ1 from './pages/aq1';
+import AQ2 from './pages/aq2';
 
 function App() {
   return  (
@@ -25,17 +18,10 @@ function App() {
         <Route path='/home' element={<Home/>} />
         <Route path='/search' element={<Search/>} />
         <Route path='/insert' element={<Insert/>} />
-
-        <Route path='/delete/noc' element={<DeleteNOC/>} />
-        <Route path='/delete/athlete/' element={<DeleteAthlete/>} />
-        <Route path='/delete/coach/' element={<DeleteCoach/>} />
-        <Route path='/delete/team/' element={<DeleteTeam/>} />
-        <Route path='/delete/discipline/' element={<DeleteDiscipline/>} />
-        <Route path='/delete/participate/' element={<DeleteParticipate/>} />
-
+        <Route path='/delete' element={<Delete/>} />
         <Route path='/update' element={<Update/>} />
-        <Route path='/aq/aq1' element={<AQ1/>} />
-        <Route path='/aq/aq2' element={<AQ2/>} />
+        <Route path='/aq1' element={<AQ1/>} />
+        <Route path='/aq2' element={<AQ2/>} />
       </Routes>
     </Router>
   );

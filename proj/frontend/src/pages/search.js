@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Axios from 'axios';
-import showRows from "../Display.js";
+import showRows from "../components/MyTable.js";
 
 function Search() {
     const [responseData, setResponseData] = useState([]);

@@ -28,24 +28,6 @@ function MySideNav() {
 
             <NavItem eventKey="delete">
                 <NavText>Delete</NavText>
-                <NavItem eventKey="delete/noc">
-                    <NavText>NOC</NavText>
-                </NavItem>
-                <NavItem eventKey="delete/athlete">
-                    <NavText>Athlete</NavText>
-                </NavItem>
-                <NavItem eventKey="delete/coach">
-                    <NavText>Coach</NavText>
-                </NavItem>
-                <NavItem eventKey="delete/team">
-                    <NavText>Team</NavText>
-                </NavItem>
-                <NavItem eventKey="delete/discipline">
-                    <NavText>Discipline</NavText>
-                </NavItem>
-                <NavItem eventKey="delete/participate">
-                    <NavText>Participate</NavText>
-                </NavItem>
             </NavItem>
 
             <NavItem eventKey="update">
@@ -54,10 +36,10 @@ function MySideNav() {
 
             <NavItem>
                 <NavText>Advanced Queries</NavText>
-                <NavItem eventKey="aq/aq1">
+                <NavItem eventKey="aq1">
                     <NavText>AQ1</NavText>
                 </NavItem>
-                <NavItem eventKey="aq/aq2">
+                <NavItem eventKey="aq2">
                     <NavText>AQ2</NavText>
                 </NavItem>
             </NavItem>
