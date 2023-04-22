@@ -55,6 +55,25 @@ app.post("/api/delete", (require, response) => {
     })
 })
 
+app.post("/api/delete2", (require, response) => {
+    const deleteTable = require.body.deleteTable;
+    const deleteAttribute1 = require.body.deleteAttribute1;
+    const deleteAttribute2 = require.body.deleteAttribute2;
+    const deleteValue1 = require.body.deleteValue1;
+    const deleteValue2 = require.body.deleteValue2;
+
+    const sqlDelete = `DELETE FROM ${deleteTable} WHERE ${deleteAttribute1} = '${deleteValue1}' AND ${deleteAttribute2} = '${deleteValue2}';`;
+    db.query(sqlDelete, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Deleted!");
+            response.send(result);
+        }
+    })
+})
+
+
 app.post("/api/update", (require, response) => {
     const updateTable = require.body.updateTable;
     const updateSetAttribute = require.body.updateSetAttribute;

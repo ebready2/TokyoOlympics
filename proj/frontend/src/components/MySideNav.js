@@ -18,46 +18,46 @@ function MySideNav() {
                 <NavText>Home</NavText>
             </NavItem>
 
-            <NavItem>
+            <NavItem eventKey="search">
                 <NavText>Search</NavText>
-                <NavItem eventKey="NOC">
+            </NavItem>
+
+            <NavItem eventKey="insert">
+                <NavText>Insert</NavText>
+            </NavItem>
+
+            <NavItem eventKey="delete">
+                <NavText>Delete</NavText>
+                <NavItem eventKey="delete/noc">
                     <NavText>NOC</NavText>
                 </NavItem>
-                <NavItem eventKey="Athlete">
+                <NavItem eventKey="delete/athlete">
                     <NavText>Athlete</NavText>
                 </NavItem>
-                <NavItem eventKey="Coach">
+                <NavItem eventKey="delete/coach">
                     <NavText>Coach</NavText>
                 </NavItem>
-                <NavItem eventKey="Discipline">
-                    <NavText>Discipline</NavText>
-                </NavItem>
-                <NavItem eventKey="Team">
+                <NavItem eventKey="delete/team">
                     <NavText>Team</NavText>
                 </NavItem>
-                <NavItem eventKey="Participate">
+                <NavItem eventKey="delete/discipline">
+                    <NavText>Discipline</NavText>
+                </NavItem>
+                <NavItem eventKey="delete/participate">
                     <NavText>Participate</NavText>
                 </NavItem>
             </NavItem>
 
-            <NavItem eventKey="Insert">
-                <NavText>Insert</NavText>
-            </NavItem>
-
-            <NavItem eventKey="Delete">
-                <NavText>Delete</NavText>
-            </NavItem>
-
-            <NavItem eventKey="Update">
+            <NavItem eventKey="update">
                 <NavText>Update</NavText>
             </NavItem>
 
             <NavItem>
                 <NavText>Advanced Queries</NavText>
-                <NavItem eventKey="AQ1">
+                <NavItem eventKey="aq/aq1">
                     <NavText>AQ1</NavText>
                 </NavItem>
-                <NavItem eventKey="AQ2">
+                <NavItem eventKey="aq/aq2">
                     <NavText>AQ2</NavText>
                 </NavItem>
             </NavItem>

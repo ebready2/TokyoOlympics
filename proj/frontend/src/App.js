@@ -1,26 +1,41 @@
 import './App.css';
 import MySideNav from './components/MySideNav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Home from './pages/Home';
-import Search from './pages/Search';
-import Insert from './pages/Insert';
-import Delete from './pages/Delete';
-import Update from './pages/Update';
-import AQ1 from './pages/AQ1';
-import AQ2 from './pages/AQ2';
+import Search from './pages/Search/Search';
+import Insert from './pages/Insert/Insert';
+
+import DeleteNOC from './pages/Delete/DeleteNOC';
+import DeleteAthlete from './pages/Delete/DeleteAthlete';
+import DeleteCoach from './pages/Delete/DeleteCoach';
+import DeleteTeam from './pages/Delete/DeleteTeam';
+import DeleteDiscipline from './pages/Delete/DeleteDiscipline';
+import DeleteParticipate from './pages/Delete/DeleteParticipate';
+
+import Update from './pages/Update/Update';
+import AQ1 from './pages/AQ/AQ1';
+import AQ2 from './pages/AQ/AQ2';
 
 function App() {
   return  (
     <Router>
       <MySideNav/>
       <Routes>
-        <Route path='/Home' element={<Home/>} />
-        <Route path='/Search' element={<Search/>} />
-        <Route path='/Insert' element={<Insert/>} />
-        <Route path='/Delete' element={<Delete/>} />
-        <Route path='/Update' element={<Update/>} />
-        <Route path='/AQ1' element={<AQ1/>} />
-        <Route path='/AQ2' element={<AQ2/>} />
+        <Route path='/home' element={<Home/>} />
+        <Route path='/search' element={<Search/>} />
+        <Route path='/insert' element={<Insert/>} />
+
+        <Route path='/delete/noc' element={<DeleteNOC/>} />
+        <Route path='/delete/athlete/' element={<DeleteAthlete/>} />
+        <Route path='/delete/coach/' element={<DeleteCoach/>} />
+        <Route path='/delete/team/' element={<DeleteTeam/>} />
+        <Route path='/delete/discipline/' element={<DeleteDiscipline/>} />
+        <Route path='/delete/participate/' element={<DeleteParticipate/>} />
+
+        <Route path='/update' element={<Update/>} />
+        <Route path='/aq/aq1' element={<AQ1/>} />
+        <Route path='/aq/aq2' element={<AQ2/>} />
       </Routes>
     </Router>
   );
@@ -55,9 +70,9 @@ export default App;
 //   const [updateAttribute, setUpdateAttribute] = useState('');
 //   const [updateValue, setUpdateValue] = useState('');
 
-//   const [searchTable, setSearchTable] = useState('');
-//   const [searchAttribute, setSearchAttribute] = useState('');
-//   const [searchKeyword, setSearchKeyword] = useState('');
+  // const [searchTable, setSearchTable] = useState('');
+  // const [searchAttribute, setSearchAttribute] = useState('');
+  // const [searchKeyword, setSearchKeyword] = useState('');
 
 //   // requests
 //   const submitInsert = () => {
@@ -75,21 +90,6 @@ export default App;
 //       console.log(response);
 //     }).catch((error) => {
 //       console.log('Insert error');
-//       console.log(error);
-//     })
-//   };
-
-//   const submitDelete = () => {
-//     Axios.post('http://localhost:3002/api/delete', {
-//       deleteTable: deleteTable,
-//       deleteAttribute: deleteAttribute,
-//       deleteValue: deleteValue
-//     }).then((response) => {
-//       // display the remaining entries with a similar deleteValue
-//       setMyQuery(`SELECT * FROM ${deleteTable} WHERE ${deleteAttribute} LIKE '%${deleteValue}%';`);
-//       console.log(response);
-//     }).catch((error) => {
-//       console.log('Delete error');
 //       console.log(error);
 //     })
 //   };
@@ -112,36 +112,36 @@ export default App;
 //     })
 //   }
 
-//   const submitSearch = () => {
-//     Axios.get('http://localhost:3002/api/search', {
-//       params: {
-//         searchTable: searchTable,
-//         searchAttribute: searchAttribute,
-//         searchKeyword: searchKeyword
-//       }
-//     }).then((response) => {
-//       setResponseData(response.data);
-//       console.log(response);
-//     }).catch((error) => {
-//       console.log('Search error');
-//       console.log(error);
-//     })
-//   };
+  // const submitSearch = () => {
+  //   Axios.get('http://localhost:3002/api/search', {
+  //     params: {
+  //       searchTable: searchTable,
+  //       searchAttribute: searchAttribute,
+  //       searchKeyword: searchKeyword
+  //     }
+  //   }).then((response) => {
+  //     setResponseData(response.data);
+  //     console.log(response);
+  //   }).catch((error) => {
+  //     console.log('Search error');
+  //     console.log(error);
+  //   })
+  // };
 
-//   const submitDisplay = () => {
-//     Axios.get('http://localhost:3002/api/display', {
-//       params: {
-//         myQuery: myQuery
-//       }
-//     }).then((response) => {
-//       setResponseData(response.data);
-//       console.log(response);
-//       showResponse("output");
-//     }).catch((error) => {
-//       console.log('Display error');
-//       console.log(error);
-//     })
-//   };
+  // const submitDisplay = () => {
+  //   Axios.get('http://localhost:3002/api/display', {
+  //     params: {
+  //       myQuery: myQuery
+  //     }
+  //   }).then((response) => {
+  //     setResponseData(response.data);
+  //     console.log(response);
+  //     showResponse("output");
+  //   }).catch((error) => {
+  //     console.log('Display error');
+  //     console.log(error);
+  //   })
+  // };
 
 //   const submitQuery1 = () => {
 //     Axios.get('http://localhost:3002/api/query1')
@@ -387,3 +387,4 @@ export default App;
 // }
 
 // export default App;
+
