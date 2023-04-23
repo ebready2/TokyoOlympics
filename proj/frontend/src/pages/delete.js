@@ -56,7 +56,7 @@ function DeleteAthlete() {
           <h1 className="whatif">What-If Olympics</h1>
       </div>
       <div className="content">
-        <h1> Delete</h1>
+        <h2> Delete Matching Records </h2>
         <Select
             placeholder="Select Table"
             value={deleteTable}
@@ -75,13 +75,15 @@ function DeleteAthlete() {
             getOptionValue={x => x.attributeName}
         />
         <br/>
-        <label> deleteValue:</label>
+        <label> Delete Value: </label>
         <input type="text" name="deleteValue" onChange={(e) => {
             setDeleteValue(e.target.value)
         }}/>
         <button onClick={submitDelete}> Delete</button>
         <button onClick={submitDisplay}> Display</button>
-        <h1 className="response">Verify with Search</h1>
+        <br/>
+        <br/>
+        <h2 className="response">Verify with Search</h2>
         <div id="container"></div>
       </div>
     </div>

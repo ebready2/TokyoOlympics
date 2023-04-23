@@ -45,7 +45,7 @@ function Search() {
         </div>
         <div>
             <div className="content">
-            <h1> Search</h1>
+            <h2> Search for Keyword</h2>
             <Select
                 placeholder="Select Table"
                 value={searchTable}
@@ -64,41 +64,15 @@ function Search() {
                 getOptionValue={x => x.attributeName}
             />
             <br/>
-            <label> searchKeyword:</label>
+            <label> Keyword: </label>
             <input type="text" name="searchKeyword" onChange={(e) => {
                 setSearchKeyword(e.target.value)
             }}/>
             <button onClick={submitSearch}> Search</button>
             <button onClick={() => showRows(responseData)}> Display</button>
-            {/* <table className="contentTable">
-                <div className="form">
-                <tr>
-                    <td><label> searchTable:</label></td>
-                    <td><input type="text" name="searchTable" onChange={(e) => {
-                    setSearchTable(e.target.value)
-                    } }/></td>
-                </tr>
-
-                <tr>
-                    <td><label> searchAttribute:</label></td>
-                    <td><input type="text" name="searchAttribute" onChange={(e) => {
-                    setSearchAttribute(e.target.value)
-                    } }/></td>
-                </tr>
-
-                <tr>
-                    <td><label> searchKeyword:</label></td>
-                    <td><input type="text" name="searchKeyword" onChange={(e) => {
-                    setSearchKeyword(e.target.value)
-                    } }/></td>
-                </tr>
-
-                <button onClick={submitSearch}> Search</button>
-                <button onClick={() => showRows(responseData)}> Display</button>
-                </div>
-            </table> */}
-
-            <h1 className="response">Your Results</h1>
+            <br/>
+            <br/>
+            <h2 className="response">Your Results</h2>
             <div id="container"></div>
             </div>
         </div>

@@ -52,53 +52,53 @@ function Insert() {
           </div>
           <div>
             <div className="content">
-              <h1> Add a New Country</h1>
+              <h2> Add a New Country</h2>
               <table className="contentTable">
                 <div className="form">
                   <tr>
-                    <td><label> NOCName:</label></td>
+                    <td><label> NOC Name:</label></td>
                     <td><input type="text" name="NOCName" onChange={(e) => {
                       setNOCName(e.target.value)
                     } }/></td>
                   </tr>
     
                   <tr>
-                    <td><label> ranking:</label></td>
+                    <td><label> Ranking:</label></td>
                     <td><input type="text" name="ranking" onChange={(e) => {
                       setRanking(e.target.value)
                     }}/></td>
                   </tr>
     
                   <tr>
-                    <td><label> weightedRanking:</label></td>
+                    <td><label> Weighted Ranking:</label></td>
                     <td><input type="text" name="weightedRanking" onChange={(e) => {
                       setWeightedRanking(e.target.value)
                     }}/></td>
                   </tr>
     
                   <tr>
-                    <td><label> goldMedalCount:</label></td>
+                    <td><label> Gold Medal Count:</label></td>
                     <td><input type="text" name="goldMedalCount" onChange={(e) => {
                       setGoldMedalCount(e.target.value)
                     }}/></td>
                   </tr>
     
                   <tr>
-                    <td><label> silverMedalCount:</label></td>
+                    <td><label> Silver Medal Count:</label></td>
                     <td><input type="text" name="silverMedalCount" onChange={(e) => {
                       setSilverMedalCount(e.target.value)
                     }}/></td>
                   </tr>
     
                   <tr>
-                    <td><label> bronzeMedalCount:</label></td>
+                    <td><label> Bronze Medal Count:</label></td>
                     <td><input type="text" name="bronzeMedalCount" onChange={(e) => {
                       setBronzeMedalCount(e.target.value)
                     }}/></td>
                   </tr>
     
                   <tr>
-                    <td><label> totalMedalCount:</label></td>
+                    <td><label> Total Medal Count:</label></td>
                     <td><input type="text" name="totalMedalCount" onChange={(e) => {
                       setTotalMedalCount(e.target.value)
                     }}/></td>
@@ -108,7 +108,8 @@ function Insert() {
                   <button onClick={submitDisplay}> Display</button>
                 </div>
               </table>
-              <h1 className="response">Your New Country</h1>
+              <br/>
+              <h2 className="response">Your New Country</h2>
               <div id="container"></div>
             </div>
           </div>

@@ -141,17 +141,17 @@ export default App;
 //     })
 //   }
 
-//   const submitQuery2 = () => {
-//     Axios.get('http://localhost:3002/api/query2')
-//     .then((response) => {
-//       setResponseData(response.data);
-//       console.log(response);
-//       showResponse("output");
-//     }).catch((error) => {
-//       console.log('Query 2 error');
-//       console.log(error);
-//     })
-//   }
+  // const submitQuery2 = () => {
+  //   Axios.get('http://localhost:3002/api/query2')
+  //   .then((response) => {
+  //     setResponseData(response.data);
+  //     console.log(response);
+  //     showResponse("output");
+  //   }).catch((error) => {
+  //     console.log('Query 2 error');
+  //     console.log(error);
+  //   })
+  // }
 
 //   const showResponse = (output) => {
 //     // pretty print in response box

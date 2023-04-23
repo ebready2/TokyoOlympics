@@ -148,12 +148,12 @@ app.get("/api/query1", (require, response) => {
 app.get("/api/query2", (require, response) => {
     const sqlQuery2 = `(SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount
     FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)
-    WHERE a.discName = 'Basketball'
+    WHERE c.discName = 'Basketball'
     GROUP BY coachName, c.NOCName, c.discName)
     UNION
     (SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount
     FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)
-    WHERE a.discName = 'Football'
+    WHERE c.discName = 'Football'
     GROUP BY coachName, c.NOCName, c.discName)
     ORDER BY coachName
     LIMIT 15;

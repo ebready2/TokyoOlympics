@@ -68,9 +68,9 @@ function Update() {
           </div>
           <div>
             <div className="content">
-              <h2> Update</h2>
+              <h2> Update Matching Records</h2>
                 <Select
-                    placeholder="Select Table"
+                    placeholder="Select Table to Update"
                     value={updateTable}
                     options={data}
                     onChange={handleTableChange}
@@ -87,10 +87,11 @@ function Update() {
                     getOptionValue={x => x.attributeName}
                 />
                 <br/>
-                <label> updateValue1:</label>
+                <label> Value to Set: </label>
                 <input type="text" name="updateValue1" onChange={(e) => {
                     setUpdateValue1(e.target.value)
                 }}/>
+                <br/>
                 <br/>
                 <Select
                     placeholder="Select Attribute to Filter By"
@@ -101,14 +102,17 @@ function Update() {
                     getOptionValue={x => x.attributeName}
                 />
                 <br/>
-                <label> updateValue2:</label>
+                <label> Value to Filter By: </label>
                 <input type="text" name="updateValue2" onChange={(e) => {
                     setUpdateValue2(e.target.value)
                 }}/>
                 <br/>
+                <br/>
                 <button onClick={submitUpdate}> Update</button>
                 <button onClick={submitDisplay}> Display</button>
-                <h1 className="response">Your New Country</h1>
+                <br/>
+                <br/>
+                <h2 className="response">Your Updated Records</h2>
                 <div id="container"></div>
             </div>
           </div>
