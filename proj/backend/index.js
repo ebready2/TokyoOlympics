@@ -76,12 +76,12 @@ app.post("/api/delete2", (require, response) => {
 
 app.post("/api/update", (require, response) => {
     const updateTable = require.body.updateTable;
-    const updateSetAttribute = require.body.updateSetAttribute;
-    const updateSetValue = require.body.updateSetValue;
-    const updateAttribute = require.body.updateAttribute;
-    const updateValue = require.body.updateValue;
+    const updateAttribute1 = require.body.updateAttribute1;
+    const updateValue1 = require.body.updateValue1;
+    const updateAttribute2 = require.body.updateAttribute2;
+    const updateValue2 = require.body.updateValue2;
 
-    const sqlUpdate = `UPDATE ${updateTable} SET ${updateSetAttribute} = ${updateSetValue} WHERE ${updateAttribute} = '${updateValue}';`;
+    const sqlUpdate = `UPDATE ${updateTable} SET ${updateAttribute1} = ${updateValue1} WHERE ${updateAttribute2} = '${updateValue2}';`;
     db.query(sqlUpdate, (err, result) => {
         if (err) {
             console.log(err);
