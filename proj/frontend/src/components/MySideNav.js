@@ -14,7 +14,7 @@ function MySideNav() {
         >
             <SideNav.Toggle />
             <SideNav.Nav defaultSelected="home">
-            <NavItem eventKey="Home">
+            <NavItem eventKey="home">
                 <NavText>Home</NavText>
             </NavItem>
 
@@ -34,7 +34,7 @@ function MySideNav() {
                 <NavText>Update</NavText>
             </NavItem>
 
-            <NavItem>
+            <NavItem eventKey="aq">
                 <NavText>Advanced Queries</NavText>
                 <NavItem eventKey="aq1">
                     <NavText>AQ1</NavText>
