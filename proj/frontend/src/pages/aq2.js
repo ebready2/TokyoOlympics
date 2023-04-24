@@ -21,7 +21,7 @@ function AQ1() {
         <div className="stage4">
             <h1 className="whatif">What-If Olympics</h1>
         </div>
-        <h2 className="content"> Compute Number of Athletes that Baskeball and Football Coaches Manage</h2>
+        <h2 className="content">  Athletes that Baskeball and Football Coaches Manage</h2>
         <div>
             <table className="contentTable">
                 <tr>

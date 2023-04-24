@@ -5,7 +5,7 @@ function Home() {
                 <h1 className="whatif">What-If Olympics</h1>
             </div>
             <div className="content">
-                <h1>Welcome</h1>
+                <img src="./../images/logo.png" width="500" height="600"/>
             </div>
         </div>
     );

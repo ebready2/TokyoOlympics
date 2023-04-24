@@ -1,6 +1,7 @@
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { useNavigate } from 'react-router-dom';
+import './../App.css';
 
 function MySideNav() {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ function MySideNav() {
             console.log(selected)
             navigate('/'+selected)
         }}
-        classame='mysidenav'
+        className='mysidenav'
         >
             <SideNav.Toggle />
             <SideNav.Nav defaultSelected="home">

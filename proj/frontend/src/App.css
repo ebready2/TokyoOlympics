@@ -1,10 +1,17 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:#f6faf8
+}
+
+.whatif {
+  color:#fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .mysidenav {
-  background-color: #41cfe8;
+  background-color: #9a9a9b;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
 }
 
 .page {
@@ -43,7 +50,7 @@ body {
 .stage4 {
   display:flex;
   text-align:center;
-  background-color: #41cfe8;
+  background-color:#2c2f2c;
   justify-content: center;
 }
 
