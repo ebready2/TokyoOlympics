@@ -219,8 +219,8 @@ export default App;
 //                 }}/></td>
 //               </tr>
 
-//               <button onClick={submitInsert}> Insert</button>
-//               <button onClick={() => submitDisplay()}> Display</button>
+//               <button className="btn" onClick={submitInsert}> Insert</button>
+//               <button className="btn" onClick={() => submitDisplay()}> Display</button>
 //             </div>
 //           </table>
 
@@ -248,8 +248,8 @@ export default App;
 //                 } }/></td>
 //               </tr>
 
-//               <button onClick={submitDelete}> Delete</button>
-//               <button onClick={() => submitDisplay()}> Display</button>
+//               <button className="btn" onClick={submitDelete}> Delete</button>
+//               <button className="btn" onClick={() => submitDisplay()}> Display</button>
 //             </div>
 //           </table>
 
@@ -291,8 +291,8 @@ export default App;
 //                 } }/></td>
 //               </tr>    
 
-//               <button onClick={submitUpdate}> Update</button>
-//               <button onClick={() => submitDisplay()}> Display</button>
+//               <button className="btn" onClick={submitUpdate}> Update</button>
+//               <button className="btn" onClick={() => submitDisplay()}> Display</button>
 //             </div>
 //           </table>
 
@@ -320,8 +320,8 @@ export default App;
 //                 } }/></td>
 //               </tr>
 
-//               <button onClick={submitSearch}> Search</button>
-//               <button onClick={() => showResponse("output")}> Display</button>
+//               <button className="btn" onClick={submitSearch}> Search</button>
+//               <button className="btn" onClick={() => showResponse("output")}> Display</button>
 //             </div>
 //           </table>
 
@@ -347,7 +347,7 @@ export default App;
 //           GROUP BY n.NOCName<br></br>
 //           ORDER BY n.goldMedalCount DESC;<br></br>
 //           </p>
-//           <button onClick={submitQuery1}> Run</button>
+//           <button className="btn" onClick={submitQuery1}> Run</button>
 
 //           <h2> Query 2</h2>
 //           <p>
@@ -367,7 +367,7 @@ export default App;
 //           ORDER BY coachName<br></br>
 //           LIMIT 15;<br></br>
 //           </p>
-//           <button onClick={submitQuery2}> Run</button>
+//           <button className="btn" onClick={submitQuery2}> Run</button>
 //         </div>
 //       </div>
 //     </div>

@@ -68,7 +68,7 @@ function Update() {
           </div>
           <div>
             <div className="content">
-              <h2> Update Matching Records</h2>
+              <p className="title"> Update Matching Records</p>
                 <Select
                     placeholder="Select Table to Update"
                     value={updateTable}
@@ -108,11 +108,11 @@ function Update() {
                 }}/>
                 <br/>
                 <br/>
-                <button onClick={submitUpdate}> Update</button>
-                <button onClick={submitDisplay}> Display</button>
+                <button className="btn" onClick={submitUpdate}> Update</button>
+                <button className="btn" onClick={submitDisplay}> Display</button>
                 <br/>
                 <br/>
-                <h2 className="response">Your Updated Records</h2>
+                <p className="response, title">Your Updated Records</p>
                 <div id="container"></div>
             </div>
           </div>

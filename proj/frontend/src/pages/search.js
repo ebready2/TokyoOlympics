@@ -45,9 +45,10 @@ function Search() {
         </div>
         <div>
             <div className="content">
-            <h2> Search for Keyword</h2>
+            <p className="title"> Search for Keyword</p>
+            {/* <p>Search for </p> */}
             <Select
-                placeholder="Select Table"
+                placeholder="Search for NOC, Athlete, Coach, Team, Discipline, or Participation"
                 value={searchTable}
                 options={data}
                 onChange={handleTableChange}
@@ -64,15 +65,16 @@ function Search() {
                 getOptionValue={x => x.attributeName}
             />
             <br/>
-            <label> Keyword: </label>
+            <label className="textBox"> Keyword: </label>
             <input type="text" name="searchKeyword" onChange={(e) => {
                 setSearchKeyword(e.target.value)
             }}/>
-            <button onClick={submitSearch}> Search</button>
-            <button onClick={() => showRows(responseData)}> Display</button>
+            <br/><br/>
+            <button className="btn" onClick={submitSearch}> Search</button>
+            <button className="btn" onClick={() => showRows(responseData)}> Display</button>
             <br/>
             <br/>
-            <h2 className="response">Your Results</h2>
+            <p className="response, title">Your Results</p>
             <div id="container"></div>
             </div>
         </div>

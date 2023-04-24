@@ -21,8 +21,8 @@ function AQ1() {
         <div className="stage4">
             <h1 className="whatif">What-If Olympics</h1>
         </div>
-        <h2 className='content'> Select Countries with More Than the Average Number of Gold Medals </h2>
-        <div>
+        <div className="content">
+        <p className="title"> Select Countries with More Than the Average Number of Gold Medals </p>
             <table>
                 <tr>
                     <td>
@@ -39,13 +39,13 @@ function AQ1() {
                 </tr>
                 <tr>
                     <td>
-                    <button onClick={submitQuery1}> Run</button>
-                    <button onClick={() => showRows(responseData)}> Display</button>
+                    <button className="btn" onClick={submitQuery1}> Run</button>
+                    <button className="btn" onClick={() => showRows(responseData)}> Display</button>
                     </td>
                 </tr>
             </table>
             <br/>
-            <h2 className="response">Your Results</h2>
+            <p className="response, title">Your Results</p>
             <div id="container"></div>
         </div>
         </div>

@@ -1,11 +1,29 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color:#f6faf8
+  background-color:#fff;
+}
+
+.pgraph {
+  font-size: 170%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn {
+  padding: 5px;
 }
 
 .whatif {
   color:#fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.textBox {
+  font-size: 150%;
 }
 
 .mysidenav {
@@ -55,7 +73,6 @@ body {
 }
 
 table, th, td {
-  border: 1px solid black;
   border-collapse: collapse; 
   margin-left: auto;
   margin-right: auto;

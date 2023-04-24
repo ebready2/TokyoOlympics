@@ -56,7 +56,7 @@ function DeleteAthlete() {
           <h1 className="whatif">What-If Olympics</h1>
       </div>
       <div className="content">
-        <h2> Delete Matching Records </h2>
+        <p className="title"> Delete Matching Records </p>
         <Select
             placeholder="Select Table"
             value={deleteTable}
@@ -79,11 +79,11 @@ function DeleteAthlete() {
         <input type="text" name="deleteValue" onChange={(e) => {
             setDeleteValue(e.target.value)
         }}/>
-        <button onClick={submitDelete}> Delete</button>
-        <button onClick={submitDisplay}> Display</button>
+        <button className="btn" onClick={submitDelete}> Delete</button>
+        <button className="btn" onClick={submitDisplay}> Display</button>
         <br/>
         <br/>
-        <h2 className="response">Verify with Search</h2>
+        <p className="response, title">Verify with Search</p>
         <div id="container"></div>
       </div>
     </div>

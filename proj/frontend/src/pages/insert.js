@@ -52,7 +52,7 @@ function Insert() {
           </div>
           <div>
             <div className="content">
-              <h2> Add a New Country</h2>
+              <p className="title"> Add a New Country</p>
               <table className="contentTable">
                 <div className="form">
                   <tr>
@@ -104,12 +104,12 @@ function Insert() {
                     }}/></td>
                   </tr>
     
-                  <button onClick={submitInsert}> Insert</button>
-                  <button onClick={submitDisplay}> Display</button>
+                  <button className="btn" onClick={submitInsert}> Insert</button>
+                  <button className="btn" onClick={submitDisplay}> Display</button>
                 </div>
               </table>
               <br/>
-              <h2 className="response">Your New Country</h2>
+              <p className="response, title">Your New Country</p>
               <div id="container"></div>
             </div>
           </div>

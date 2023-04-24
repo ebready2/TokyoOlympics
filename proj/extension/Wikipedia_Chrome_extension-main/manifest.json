@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "wiki",
+    "version": "1.0", 
+    "browser_action": {
+        "default_popup": "popup.html"
+    }, 
+    "permissions": [
+        "http://127.0.0.1:8000/", 
+        "notifications"
+    ], 
+    "background": {
+        "service_worker": "background.js"
+    }
+}

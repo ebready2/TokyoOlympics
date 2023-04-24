@@ -1,3 +1,22 @@
 # don't push node modules!
 proj/frontend/node_modules/
 proj/backend/node_modules/
+
+# don't push Python
+proj/extension/DLLs
+proj/extension/Doc
+proj/extension/include
+proj/extension/Lib
+proj/extension/libs
+proj/extension/mysite
+proj/extension/Scripts
+proj/extension/tcl
+proj/extension/Tools
+proj/extension/LICENSE.txt
+proj/extension/NEWS.txt
+proj/extension/python.exe
+proj/extension/python3.dll
+proj/extension/python311.dll
+proj/extension/pythonw.exe
+proj/extension/vcruntime140_1.dll
+proj/extension/vcruntime140.dll
