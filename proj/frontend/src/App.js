@@ -9,6 +9,7 @@ import Delete from './pages/delete';
 import Update from './pages/update';
 import AQ1 from './pages/aq1';
 import AQ2 from './pages/aq2';
+import Procedure from './pages/procedure';
 
 function App() {
   return  (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/update' element={<Update/>} />
         <Route path='/aq1' element={<AQ1/>} />
         <Route path='/aq2' element={<AQ2/>} />
+        <Route path='/procedure' element={<Procedure/>} />
       </Routes>
     </Router>
   );

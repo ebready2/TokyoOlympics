@@ -44,6 +44,11 @@ function MySideNav() {
                 </NavItem>
             </NavItem>
 
+            <NavItem eventKey="procedure">
+                <NavText>Stored Procedure</NavText>
+
+            </NavItem>
+
             </SideNav.Nav>
         </SideNav>
     );

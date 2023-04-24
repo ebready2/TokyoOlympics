@@ -103,6 +103,7 @@ app.get("/api/search", (require, response) => {
             console.log(err);
         } else {
             console.log("Searched!");
+            console.log(result);
             response.send(result);
         }
     });
@@ -163,6 +164,20 @@ app.get("/api/query2", (require, response) => {
             console.log(err);
         } else {
             console.log("Query 2!");
+            console.log(result);
+            response.send(result);
+        }
+    })
+});
+
+app.get("/api/procedure", (require, response) => {
+    console.log("Running");    
+    const sqlQuery = `CALL Underdog();`;
+    db.query(sqlQuery, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Stored Procedure!");
             console.log(result);
             response.send(result);
         }
