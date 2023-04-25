@@ -55,14 +55,33 @@ app.post("/api/delete", (require, response) => {
     })
 })
 
+app.post("/api/delete2", (require, response) => {
+    const deleteTable = require.body.deleteTable;
+    const deleteAttribute1 = require.body.deleteAttribute1;
+    const deleteAttribute2 = require.body.deleteAttribute2;
+    const deleteValue1 = require.body.deleteValue1;
+    const deleteValue2 = require.body.deleteValue2;
+
+    const sqlDelete = `DELETE FROM ${deleteTable} WHERE ${deleteAttribute1} = '${deleteValue1}' AND ${deleteAttribute2} = '${deleteValue2}';`;
+    db.query(sqlDelete, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Deleted!");
+            response.send(result);
+        }
+    })
+})
+
+
 app.post("/api/update", (require, response) => {
     const updateTable = require.body.updateTable;
-    const updateSetAttribute = require.body.updateSetAttribute;
-    const updateSetValue = require.body.updateSetValue;
-    const updateAttribute = require.body.updateAttribute;
-    const updateValue = require.body.updateValue;
+    const updateAttribute1 = require.body.updateAttribute1;
+    const updateValue1 = require.body.updateValue1;
+    const updateAttribute2 = require.body.updateAttribute2;
+    const updateValue2 = require.body.updateValue2;
 
-    const sqlUpdate = `UPDATE ${updateTable} SET ${updateSetAttribute} = ${updateSetValue} WHERE ${updateAttribute} = '${updateValue}';`;
+    const sqlUpdate = `UPDATE ${updateTable} SET ${updateAttribute1} = ${updateValue1} WHERE ${updateAttribute2} = '${updateValue2}';`;
     db.query(sqlUpdate, (err, result) => {
         if (err) {
             console.log(err);
@@ -84,6 +103,7 @@ app.get("/api/search", (require, response) => {
             console.log(err);
         } else {
             console.log("Searched!");
+            console.log(result);
             response.send(result);
         }
     });
@@ -129,12 +149,12 @@ app.get("/api/query1", (require, response) => {
 app.get("/api/query2", (require, response) => {
     const sqlQuery2 = `(SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount
     FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)
-    WHERE a.discName = 'Basketball'
+    WHERE c.discName = 'Basketball'
     GROUP BY coachName, c.NOCName, c.discName)
     UNION
     (SELECT coachName, c.NOCName, c.discName, COUNT(athleteName) AS athleteCount
     FROM Athlete a JOIN Coach c ON (a.NOCName = c.NOCName AND a.discName = c.discName)
-    WHERE a.discName = 'Football'
+    WHERE c.discName = 'Football'
     GROUP BY coachName, c.NOCName, c.discName)
     ORDER BY coachName
     LIMIT 15;
@@ -144,6 +164,20 @@ app.get("/api/query2", (require, response) => {
             console.log(err);
         } else {
             console.log("Query 2!");
+            console.log(result);
+            response.send(result);
+        }
+    })
+});
+
+app.get("/api/procedure", (require, response) => {
+    console.log("Running");    
+    const sqlQuery = `CALL Underdog();`;
+    db.query(sqlQuery, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Stored Procedure!");
             console.log(result);
             response.send(result);
         }

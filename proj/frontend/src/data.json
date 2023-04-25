@@ -1,0 +1,105 @@
+[
+    {
+        "tableName": "NOC",
+        "attributes": [
+            {
+                "attributeName": "NOCName"
+            },
+            {
+                "attributeName": "ranking"
+            },
+            {
+                "attributeName": "weightedRanking"
+            },
+            {
+                "attributeName": "goldMedalCount"
+            },
+            {
+                "attributeName": "silverMedalCount"
+            },
+            {
+                "attributeName": "bronzeMedalCount"
+            },
+            {
+                "attributeName": "totalMedalCount"
+            }
+        ]
+    },
+    {
+        "tableName": "Athlete",
+        "attributes": [
+            {
+                "attributeName": "athleteName"
+            },
+            {
+                "attributeName": "NOCName"
+            },
+            {
+                "attributeName": "discName"
+            }
+        ]
+    },
+    {
+        "tableName": "Coach",
+        "attributes": [
+            {
+                "attributeName": "coachName"
+            },
+            {
+                "attributeName": "event"
+            },
+            {
+                "attributeName": "NOCName"
+            },
+            {
+                "attributeName": "discName"
+            }
+        ]
+    },
+    {
+        "tableName": "Team",
+        "attributes": [
+            {
+                "attributeName": "teamName"
+            },
+            {
+                "attributeName": "event"
+            },
+            {
+                "attributeName": "NOCName"
+            },
+            {
+                "attributeName": "discName"
+            }
+        ]
+    },
+    {
+        "tableName": "Discipline",
+        "attributes": [
+            {
+                "attributeName": "discName"
+            },
+            {
+                "attributeName": "femalePlayerCount"
+            },
+            {
+                "attributeName": "malePlayerCount"
+            },
+            {
+                "attributeName": "totalPlayerCount"
+            }
+        ]
+    },
+    {
+        "tableName": "Participate",
+        "attributes": [
+            {
+                "attributeName": "NOCName"
+            },
+            {
+                "attributeName": "discName"
+            }
+        ]
+    }
+
+]

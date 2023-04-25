@@ -1,9 +1,52 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:#fff;
+}
+
+.pgraph {
+  font-size: 170%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn {
+  padding: 5px;
+}
+
+.whatif {
+  color:#fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.textBox {
+  font-size: 150%;
+}
+
+.mysidenav {
+  background-color: #9a9a9b;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+.page {
+  font-size: 5rem;
+  text-align: center;
 }
 
 .content {
-  padding-left: 40px;
+  text-align: center;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contentTable {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .response {
@@ -12,11 +55,30 @@ body {
   justify-content: center;
 }
 
+.responseValues {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.select-class {
+  width: 25% !important;
+  margin: 0 auto;
+}
+
 .stage4 {
   display:flex;
   text-align:center;
-  background-color:darkcyan;
+  background-color:#2c2f2c;
   justify-content: center;
+}
+
+table, th, td {
+  border-collapse: collapse; 
+  margin-left: auto;
+  margin-right: auto;
+}
+td, th {
+  padding: 10px;
 }
 
 .search-container {
